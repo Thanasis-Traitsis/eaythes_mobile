@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'config/routes/routes.dart';
 import 'config/theme/app_theme.dart';
 import 'config/theme/colors.dart';
-import 'features/auth/presentation/home_screen.dart';
 
 void main() {
   runApp(const MainApp());
