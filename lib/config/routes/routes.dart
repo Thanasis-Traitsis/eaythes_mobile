@@ -1,5 +1,5 @@
-import 'package:eaythes_mobile/core/bottom_navbar/scaffold_with_navbar.dart';
-import 'package:eaythes_mobile/features/auth/presentation/home_screen.dart';
+import 'package:eaythes_mobile/core/scaffold_with_navbar/scaffold_with_navbar.dart';
+import 'package:eaythes_mobile/features/auth/presentation/pages/home_screen.dart';
 import 'package:eaythes_mobile/features/blogs/presentation/blogs_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

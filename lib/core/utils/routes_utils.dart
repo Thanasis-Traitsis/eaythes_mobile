@@ -5,7 +5,7 @@ enum Pages {
     screenPath: '/',
     screenName: 'home',
     screenTitle: 'Αρχική',
-    screenIcon: Icons.home,
+    screenIcon: Icons.home_rounded,
   ),
   blogs(
     screenPath: '/blogs',
