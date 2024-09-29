@@ -6,6 +6,7 @@ class AppColors {
   final Color backgroundColor;
   final Color textColor;
   final Color primaryColor;
+  final Color lightPrimary;
 
   AppColors({
     required this.whiteColor,
@@ -13,6 +14,7 @@ class AppColors {
     required this.backgroundColor,
     required this.textColor,
     required this.primaryColor,
+    required this.lightPrimary,
   });
 
   static final mainColors = AppColors(
@@ -21,5 +23,6 @@ class AppColors {
     backgroundColor: const Color(0xffDCEBFB),
     textColor: const Color(0xff203A8A),
     primaryColor: const Color(0xff203A8A),
+    lightPrimary: const Color(0xff8E9FD5),
   );
 }

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'config/routes/routes.dart';
 import 'config/theme/app_theme.dart';
 import 'config/theme/colors.dart';
+import 'features/auth/presentation/widgets/carousel/carousel_bloc/carousel_bloc.dart';
 import 'features/blogs/presentation/blogs_bloc/blogs_bloc.dart';
 
 void main() {
@@ -17,6 +18,7 @@ void main() {
         BlocProvider<BlogsBloc>(
           create: (context) => BlogsBloc()..add(FetchAllBlogs()),
         ),
+        BlocProvider<CarouselBloc>(create: (context) => CarouselBloc()),
       ],
       child: const MainApp(),
     ),

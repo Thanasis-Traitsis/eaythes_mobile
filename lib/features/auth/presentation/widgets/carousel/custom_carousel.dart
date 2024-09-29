@@ -1,8 +1,12 @@
 import 'package:eaythes_mobile/core/constants/constants.dart';
+import 'package:eaythes_mobile/features/auth/presentation/widgets/carousel/carousel_bloc/carousel_bloc.dart';
+import 'package:eaythes_mobile/features/auth/presentation/widgets/carousel/carousel_page_indicator.dart';
 import 'package:flutter/material.dart';
 
 import 'package:eaythes_mobile/features/auth/presentation/widgets/carousel/carousel_single_item.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/constants/styles.dart';
 import '../../../../blogs/data/models/blog_model.dart';
 
 class CustomCarousel extends StatefulWidget {
@@ -19,7 +23,6 @@ class CustomCarousel extends StatefulWidget {
 
 class _CustomCarouselState extends State<CustomCarousel> {
   final PageController _controller = PageController();
-  int _currentIndex = 0;
 
   @override
   void initState() {
@@ -27,28 +30,36 @@ class _CustomCarouselState extends State<CustomCarousel> {
 
     _controller.addListener(() {
       int nextPage = _controller.page?.round() ?? 0;
-      if (nextPage != _currentIndex) {
-        setState(() {
-          _currentIndex = nextPage;
-        });
-      }
+
+      BlocProvider.of<CarouselBloc>(context)
+          .add(ChangeIndicator(current: nextPage));
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    int recentCount = widget.recentList.length > recentBlogs
+        ? recentBlogs
+        : widget.recentList.length;
+
     return widget.recentList.isNotEmpty
-        ? SizedBox(
-            height: 200,
-            child: PageView.builder(
-              controller: _controller,
-              itemCount: widget.recentList.length > recentBlogs
-                  ? recentBlogs
-                  : widget.recentList.length,
-              itemBuilder: (context, index) {
-                return CarouselSingleItem(blog: widget.recentList[index]);
-              },
-            ),
+        ? Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: carouselHeight,
+                child: PageView.builder(
+                  controller: _controller,
+                  itemCount: recentCount,
+                  itemBuilder: (context, index) {
+                    return CarouselSingleItem(blog: widget.recentList[index]);
+                  },
+                ),
+              ),
+              CarouselPageIndicator(
+                indicatorsCount: recentCount,
+              )
+            ],
           )
         : Container();
   }

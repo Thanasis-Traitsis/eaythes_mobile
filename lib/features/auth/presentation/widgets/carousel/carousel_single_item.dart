@@ -3,6 +3,7 @@ import 'package:eaythes_mobile/features/blogs/data/models/blog_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/constants/styles.dart';
+import '../../../../../core/widgets/custom_category_container.dart';
 
 class CarouselSingleItem extends StatelessWidget {
   final BlogModel blog;
@@ -12,19 +13,52 @@ class CarouselSingleItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(spacing),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: CachedNetworkImageProvider(
-            blog.image,
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: CachedNetworkImageProvider(
+                  blog.image,
+                  cacheKey: blog.id,
+                ),
+                fit: BoxFit.cover,
+              ),
+              borderRadius: BorderRadius.circular(borderRadius),
+            ),
           ),
-          fit: BoxFit.cover,
-        ),
-        borderRadius: BorderRadius.circular(
-          borderRadius,
-        ),
-      ),
-      child: Center(
-        child: Text(blog.id),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(borderRadius),
+              gradient: LinearGradient(
+                stops: const [0, 0.6],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                colors: [
+                  Theme.of(context).primaryColor,
+                  Colors.transparent,
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(padding),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                CustomCategoryContainer(),
+                Text(
+                  blog.title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

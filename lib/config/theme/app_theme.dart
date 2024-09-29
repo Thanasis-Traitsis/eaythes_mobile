@@ -1,3 +1,4 @@
+import 'package:eaythes_mobile/config/theme/category_container_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/constants/constants.dart';
@@ -18,6 +19,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       fontFamily: fontFamilyName,
+      disabledColor: chosenColor.lightPrimary,
       colorScheme: ColorScheme.fromSeed(
         seedColor: chosenColor.primaryColor,
         surface: chosenColor.backgroundColor,
@@ -30,6 +32,12 @@ class AppTheme {
         selectedItemColor: chosenColor.whiteColor,
         unselectedItemColor: chosenColor.whiteColor.withOpacity(withOpacity),
       ),
+      extensions: <ThemeExtension<dynamic>>[
+        CategoryContainerTheme(
+          backgroundColor: chosenColor.whiteColor,
+          textColor: chosenColor.primaryColor,
+        ),
+      ],
     );
   }
 }
