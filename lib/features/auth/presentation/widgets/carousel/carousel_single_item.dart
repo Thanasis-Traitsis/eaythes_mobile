@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:eaythes_mobile/core/widgets/custom_title.dart';
 import 'package:eaythes_mobile/features/blogs/data/models/blog_model.dart';
 import 'package:flutter/material.dart';
 
@@ -47,14 +48,13 @@ class CarouselSingleItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                CustomCategoryContainer(),
-                Text(
-                  blog.title,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                CustomCategoryContainer(
+                  text: blog.category,
                 ),
+                const SizedBox(
+                  height: spacing,
+                ),
+                CustomTitle(title: blog.title, isWhite: true),
               ],
             ),
           ),

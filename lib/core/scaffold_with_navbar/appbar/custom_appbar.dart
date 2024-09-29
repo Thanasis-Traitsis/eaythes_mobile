@@ -8,7 +8,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   const CustomAppBar({
     required this.imagePath,
-    this.imageHeight = 60,
+    this.imageHeight = appbarImageHeight,
     super.key,
   });
 

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../config/theme/category_container_theme.dart';
+import '../../config/theme/responsive_text.dart';
 
 class CustomCategoryContainer extends StatelessWidget {
-  const CustomCategoryContainer({super.key});
+  final String text;
+
+  const CustomCategoryContainer({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +18,9 @@ class CustomCategoryContainer extends StatelessWidget {
         borderRadius: categoryTheme?.categoryBorderRadius,
         color: categoryTheme?.backgroundColor,
       ),
-      child: Text(
-        "sdfsdfsf",
-        style: TextStyle(
-          color: categoryTheme?.textColor,
-        ),
+      child: ResponsiveText(
+        text: text,
+        style: Theme.of(context).textTheme.labelSmall!,
       ),
     );
   }

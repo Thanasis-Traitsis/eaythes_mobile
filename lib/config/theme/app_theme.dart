@@ -23,6 +23,8 @@ class AppTheme {
       colorScheme: ColorScheme.fromSeed(
         seedColor: chosenColor.primaryColor,
         surface: chosenColor.backgroundColor,
+        onPrimary: chosenColor.blackColor,
+        onSurface: chosenColor.whiteColor,
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: chosenColor.backgroundColor,
@@ -31,6 +33,18 @@ class AppTheme {
         backgroundColor: chosenColor.primaryColor,
         selectedItemColor: chosenColor.whiteColor,
         unselectedItemColor: chosenColor.whiteColor.withOpacity(withOpacity),
+      ),
+      textTheme: TextTheme(
+        labelSmall: TextStyle(
+          fontSize: sizes.smallText,
+          color: chosenColor.primaryColor,
+          fontWeight: FontWeight.bold,
+        ),
+        titleLarge: TextStyle(
+          fontSize: sizes.largeText,
+          color: chosenColor.primaryColor,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       extensions: <ThemeExtension<dynamic>>[
         CategoryContainerTheme(
