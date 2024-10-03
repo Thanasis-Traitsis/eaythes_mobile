@@ -40,11 +40,36 @@ class AppTheme {
           color: chosenColor.primaryColor,
           fontWeight: FontWeight.bold,
         ),
+        labelMedium: TextStyle(
+          fontSize: sizes.normalText,
+          color: chosenColor.primaryColor,
+          fontWeight: FontWeight.bold,
+        ),
         titleLarge: TextStyle(
           fontSize: sizes.largeText,
           color: chosenColor.primaryColor,
           fontWeight: FontWeight.bold,
         ),
+        bodyMedium: TextStyle(
+          fontSize: sizes.normalText,
+          color: chosenColor.textColor,
+        ),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius / 2),
+              ),
+            ),
+            backgroundColor:
+                WidgetStateProperty.all<Color>(chosenColor.whiteColor),
+            padding: WidgetStateProperty.all<EdgeInsets>(
+              const EdgeInsets.symmetric(horizontal: padding),
+            ),
+            textStyle: WidgetStateProperty.all<TextStyle>(TextStyle(
+              fontSize: sizes.normalText,
+            ))),
       ),
       extensions: <ThemeExtension<dynamic>>[
         CategoryContainerTheme(

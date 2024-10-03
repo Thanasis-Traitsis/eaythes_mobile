@@ -1,4 +1,5 @@
 import 'package:eaythes_mobile/features/auth/presentation/auth_bloc/auth_bloc.dart';
+import 'package:eaythes_mobile/features/blogs/presentation/category_bloc/category_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,6 +20,9 @@ void main() {
           create: (context) => BlogsBloc()..add(FetchAllBlogs()),
         ),
         BlocProvider<CarouselBloc>(create: (context) => CarouselBloc()),
+        BlocProvider<CategoryBloc>(
+          create: (context) => CategoryBloc()..add(FetchAllCategories()),
+        ),
       ],
       child: const MainApp(),
     ),

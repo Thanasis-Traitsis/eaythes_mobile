@@ -1,8 +1,9 @@
-import 'package:eaythes_mobile/features/auth/presentation/widgets/carousel/custom_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../blogs/presentation/blogs_bloc/blogs_bloc.dart';
+import '../widgets/carousel/custom_carousel.dart';
+import '../widgets/categories_list/categories_list_container.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,12 +12,15 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BlogsBloc, BlogsState>(
       builder: (context, state) {
-        return Column(
-          children: [
-            CustomCarousel(
-              recentList: state is BlogsFetchAll ? state.blogs : [],
-            ),
-          ],
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              CustomCarousel(
+                recentList: state is BlogsFetchAll ? state.blogs : [],
+              ),
+              const CategoriesListContainer(),
+            ],
+          ),
         );
       },
     );

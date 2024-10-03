@@ -1,0 +1,22 @@
+{
+  "categories": [
+    {
+      "category": {
+        "id": "123454r23rfd",
+        "name": "Category 1"
+      }
+    },
+    {
+      "category": {
+        "id": "123664r23rfd",
+        "name": "Category 2"
+      }
+    },
+    {
+      "category": {
+        "id": "333454r23rfd",
+        "name": "Category 3"
+      }
+    }
+  ]
+}
