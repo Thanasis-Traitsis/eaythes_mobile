@@ -12,12 +12,21 @@ class BlogsBloc extends Bloc<BlogsEvent, BlogsState> {
 
   BlogsBloc() : super(BlogsInitial()) {
     on<FetchAllBlogs>(_onFetchAllBlogs);
+    on<FilterBlogs>(_onFilterBlogs);
   }
 
   void _onFetchAllBlogs(FetchAllBlogs event, Emitter<BlogsState> emit) async {
     emit(BlogsLoading());
+    
     List<BlogModel> blogs = await blogRepo.fetchAllBlogs();
 
     emit(BlogsFetchAll(blogs: blogs));
+  }
+
+  void _onFilterBlogs(FilterBlogs event, Emitter<BlogsState> emit) async {
+    emit(BlogsLoading());
+    // List<BlogModel> blogs = await blogRepo.fetchAllBlogs();
+
+    emit(BlogsFetchAll(blogs: []));
   }
 }

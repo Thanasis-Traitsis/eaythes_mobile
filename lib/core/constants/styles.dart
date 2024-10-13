@@ -9,3 +9,6 @@ const double appbarImageHeight = 60;
 // HOME SCREEN
 const double carouselHeight = 250;
 const double carouselIndicatorSize = 12;
+
+// BLOGS LIST
+const double blogImageHeight = 100;

@@ -20,7 +20,7 @@ class _CategoriesListContainerState extends State<CategoriesListContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(spacing),
+      margin: const EdgeInsets.only(left: spacing),
       height: calculateSize(context, 30),
       child: BlocBuilder<CategoryBloc, CategoryState>(
         builder: (context, state) {

@@ -1,3 +1,5 @@
+import 'package:eaythes_mobile/config/theme/responsive_text.dart';
+import 'package:eaythes_mobile/core/usecases/calculate_size.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesListButton extends StatelessWidget {
@@ -21,9 +23,17 @@ class CategoriesListButton extends StatelessWidget {
         ),
       ),
       onPressed: onPressed,
-      child: Text(
-        text,
+      child: ResponsiveText(
+        text: text,
         style: TextStyle(
+          fontSize: calculateSize(
+            context,
+            Theme.of(context)
+                .elevatedButtonTheme
+                .style!
+                .textStyle!
+                .resolve({})!.fontSize!,
+          ),
           color: isChosen ? Theme.of(context).colorScheme.onSurface : null,
         ),
       ),

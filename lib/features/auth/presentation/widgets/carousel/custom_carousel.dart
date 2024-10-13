@@ -7,6 +7,7 @@ import 'package:eaythes_mobile/features/auth/presentation/widgets/carousel/carou
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/styles.dart';
+import '../../../../../core/widgets/custom_shimmer_effect.dart';
 import '../../../../blogs/data/models/blog_model.dart';
 
 class CustomCarousel extends StatefulWidget {
@@ -61,6 +62,13 @@ class _CustomCarouselState extends State<CustomCarousel> {
               )
             ],
           )
-        : Container();
+        : Container(
+            height: carouselHeight,
+            margin: const EdgeInsets.all(spacing),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(borderRadius),
+            ),
+            child: CustomShimmerEffect(radius: borderRadius),
+          );
   }
 }

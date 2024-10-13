@@ -13,53 +13,52 @@ class CarouselSingleItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(spacing),
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: CachedNetworkImageProvider(
-                  blog.image,
-                  cacheKey: blog.id,
+        margin: const EdgeInsets.all(spacing),
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: CachedNetworkImageProvider(
+                    blog.image,
+                    cacheKey: blog.id,
+                  ),
+                  fit: BoxFit.cover,
                 ),
-                fit: BoxFit.cover,
+                borderRadius: BorderRadius.circular(borderRadius),
               ),
-              borderRadius: BorderRadius.circular(borderRadius),
             ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(borderRadius),
-              gradient: LinearGradient(
-                stops: const [0, 0.6],
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-                colors: [
-                  Theme.of(context).primaryColor,
-                  Colors.transparent,
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(borderRadius),
+                gradient: LinearGradient(
+                  stops: const [0, 0.6],
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [
+                    Theme.of(context).primaryColor,
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(padding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  CustomCategoryContainer(
+                    text: blog.category,
+                  ),
+                  const SizedBox(
+                    height: spacing,
+                  ),
+                  CustomTitle(title: blog.title, isWhite: true),
                 ],
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(padding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                CustomCategoryContainer(
-                  text: blog.category,
-                ),
-                const SizedBox(
-                  height: spacing,
-                ),
-                CustomTitle(title: blog.title, isWhite: true),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ));
   }
 }

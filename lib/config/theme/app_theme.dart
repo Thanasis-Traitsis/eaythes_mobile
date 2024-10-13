@@ -27,6 +27,7 @@ class AppTheme {
         onSurface: chosenColor.whiteColor,
       ),
       appBarTheme: AppBarTheme(
+        scrolledUnderElevation: 0,
         backgroundColor: chosenColor.backgroundColor,
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -50,6 +51,10 @@ class AppTheme {
           color: chosenColor.primaryColor,
           fontWeight: FontWeight.bold,
         ),
+        bodySmall: TextStyle(
+          fontSize: sizes.smallText,
+          color: chosenColor.textColor,
+        ),
         bodyMedium: TextStyle(
           fontSize: sizes.normalText,
           color: chosenColor.textColor,
@@ -69,6 +74,7 @@ class AppTheme {
             ),
             textStyle: WidgetStateProperty.all<TextStyle>(TextStyle(
               fontSize: sizes.normalText,
+              fontFamily: fontFamilyName,
             ))),
       ),
       extensions: <ThemeExtension<dynamic>>[

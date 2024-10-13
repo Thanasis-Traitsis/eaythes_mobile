@@ -19,3 +19,5 @@ final class BlogsFetchAll extends BlogsState {
   @override
   String toString() => "The Entire Blogs List: $blogs";
 }
+
+final class BlogsFiltered extends BlogsState {}
