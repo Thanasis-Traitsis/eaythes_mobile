@@ -1,25 +1,25 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:eaythes_mobile/config/theme/responsive_text.dart';
+import 'package:eaythes_mobile/core/usecases/transform_date_extension.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/styles.dart';
 import 'blog_date_post.dart';
 
 class BlogListingView extends StatelessWidget {
+  final String id;
   final String title;
   final String img;
   final String category;
   final String date;
-  final String id;
 
   const BlogListingView({
     super.key,
+    required this.id,
     required this.title,
     required this.img,
     required this.category,
     required this.date,
-    required this.id,
   });
 
   @override
@@ -61,7 +61,7 @@ class BlogListingView extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleLarge!,
               ),
               BlogDatePost(
-                date: date,
+                date: date.timeAgo(),
               ),
             ],
           ),

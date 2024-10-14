@@ -16,8 +16,8 @@ class BlogsBloc extends Bloc<BlogsEvent, BlogsState> {
   }
 
   void _onFetchAllBlogs(FetchAllBlogs event, Emitter<BlogsState> emit) async {
-    emit(BlogsLoading());
-    
+    emit(BlogsInitialLoading());
+
     List<BlogModel> blogs = await blogRepo.fetchAllBlogs();
 
     emit(BlogsFetchAll(blogs: blogs));
@@ -25,8 +25,10 @@ class BlogsBloc extends Bloc<BlogsEvent, BlogsState> {
 
   void _onFilterBlogs(FilterBlogs event, Emitter<BlogsState> emit) async {
     emit(BlogsLoading());
-    // List<BlogModel> blogs = await blogRepo.fetchAllBlogs();
 
-    emit(BlogsFetchAll(blogs: []));
+    List<BlogModel> filteredList =
+        await blogRepo.applyFilterToBlogs(event.filter);
+
+    emit(BlogsFiltered(filteredBlogs: filteredList));
   }
 }

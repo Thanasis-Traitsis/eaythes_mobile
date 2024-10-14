@@ -1,8 +1,10 @@
 import 'package:eaythes_mobile/core/usecases/calculate_size.dart';
+import 'package:eaythes_mobile/features/auth/presentation/home_blogs_bloc/home_blogs_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/styles.dart';
+import '../../../../blogs/presentation/blogs_bloc/blogs_bloc.dart';
 import '../../../../blogs/presentation/category_bloc/category_bloc.dart';
 import 'categories_list_button.dart';
 
@@ -36,6 +38,8 @@ class _CategoriesListContainerState extends State<CategoriesListContainer> {
                   text: category,
                   isChosen: _selectedCategory == category,
                   onPressed: () {
+                    BlocProvider.of<HomeBlogsBloc>(context)
+                        .add(FilterBlogs(category));
                     setState(() {
                       _selectedCategory = category;
                     });

@@ -7,7 +7,6 @@ import 'package:eaythes_mobile/features/auth/presentation/widgets/carousel/carou
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/styles.dart';
-import '../../../../../core/widgets/custom_shimmer_effect.dart';
 import '../../../../blogs/data/models/blog_model.dart';
 
 class CustomCarousel extends StatefulWidget {
@@ -43,32 +42,23 @@ class _CustomCarouselState extends State<CustomCarousel> {
         ? recentBlogs
         : widget.recentList.length;
 
-    return widget.recentList.isNotEmpty
-        ? Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: carouselHeight,
-                child: PageView.builder(
-                  controller: _controller,
-                  itemCount: recentCount,
-                  itemBuilder: (context, index) {
-                    return CarouselSingleItem(blog: widget.recentList[index]);
-                  },
-                ),
-              ),
-              CarouselPageIndicator(
-                indicatorsCount: recentCount,
-              )
-            ],
-          )
-        : Container(
-            height: carouselHeight,
-            margin: const EdgeInsets.all(spacing),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(borderRadius),
-            ),
-            child: CustomShimmerEffect(radius: borderRadius),
-          );
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: carouselHeight,
+          child: PageView.builder(
+            controller: _controller,
+            itemCount: recentCount,
+            itemBuilder: (context, index) {
+              return CarouselSingleItem(blog: widget.recentList[index]);
+            },
+          ),
+        ),
+        CarouselPageIndicator(
+          indicatorsCount: recentCount,
+        )
+      ],
+    );
   }
 }

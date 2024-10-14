@@ -1,3 +1,4 @@
+import 'package:eaythes_mobile/features/blogs/data/models/blog_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,31 +17,37 @@ class HomeBlogsListing extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: spacing),
       child: BlocBuilder<HomeBlogsBloc, BlogsState>(
         builder: (context, state) {
+          List<BlogModel> list = [];
+
           if (state is BlogsFetchAll) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Column(
-                  children: List.generate(
-                    state.blogs.length,
-                    (index) {
-                      var blog = state.blogs[index];
-                      return BlogListingView(
-                        title: blog.title,
-                        img: blog.image,
-                        category: blog.category,
-                        date: blog.id,
-                        id: blog.id,
-                      );
-                    },
-                  ),
-                ),
-                const ReadMoreTextButton(),
-              ],
-            );
-          } else {
-            return Container();
+            list = state.blogs;
           }
+
+          if (state is BlogsFiltered) {
+            list = state.filteredBlogs;
+          }
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Column(
+                children: List.generate(
+                  list.length,
+                  (index) {
+                    var blog = list[index];
+                    return BlogListingView(
+                      id: blog.id,
+                      title: blog.title,
+                      img: blog.image,
+                      category: blog.category,
+                      date: blog.date,
+                    );
+                  },
+                ),
+              ),
+              list.length > 10 ? const ReadMoreTextButton() : Container()
+            ],
+          );
         },
       ),
     );

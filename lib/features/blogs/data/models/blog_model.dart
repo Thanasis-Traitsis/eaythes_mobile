@@ -7,6 +7,7 @@ class BlogModel extends BlogEntity {
     required super.image,
     required super.category,
     required super.content,
+    required super.date,
   });
 
   factory BlogModel.fromJson(Map<String, dynamic> json) {
@@ -16,6 +17,7 @@ class BlogModel extends BlogEntity {
       image: json['blog']['image'],
       category: json['blog']['category'],
       content: json['blog']['content'],
+      date: json['blog']['date']
     );
   }
 }

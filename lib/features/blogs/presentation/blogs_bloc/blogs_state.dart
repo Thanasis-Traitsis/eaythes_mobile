@@ -9,6 +9,8 @@ abstract class BlogsState extends Equatable {
 
 final class BlogsInitial extends BlogsState {}
 
+final class BlogsInitialLoading extends BlogsState {}
+
 final class BlogsLoading extends BlogsState {}
 
 final class BlogsFetchAll extends BlogsState {
@@ -20,4 +22,11 @@ final class BlogsFetchAll extends BlogsState {
   String toString() => "The Entire Blogs List: $blogs";
 }
 
-final class BlogsFiltered extends BlogsState {}
+final class BlogsFiltered extends BlogsState {
+  final List<BlogModel> filteredBlogs;
+
+  const BlogsFiltered({required this.filteredBlogs});
+
+  @override
+  String toString() => "The Filtered Blogs List: $filteredBlogs";
+}

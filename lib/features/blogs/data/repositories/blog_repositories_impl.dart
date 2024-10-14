@@ -20,6 +20,22 @@ class BlogRepositoryImplMockData implements BlogRepository {
 
     return blogs;
   }
+
+  @override
+  Future<List<BlogModel>> applyFilterToBlogs(String filter) async {
+    final blogs = <BlogModel>[];
+
+    final String response =
+        await rootBundle.loadString('assets/json/blogs_listing.json');
+
+    final data = await json.decode(response);
+
+    for (Map<String, dynamic> blog in data["blogs"]) {
+      if (blog["blog"]["category"] == filter || filter == 'Όλα') blogs.add(BlogModel.fromJson(blog));
+    }
+
+    return blogs;
+  }
 }
 
 class BlogRepositoryImplLocalDatabase implements BlogRepository {
@@ -27,11 +43,21 @@ class BlogRepositoryImplLocalDatabase implements BlogRepository {
   Future<List<BlogModel>> fetchAllBlogs() async {
     return [];
   }
+
+  @override
+  Future<List<BlogModel>> applyFilterToBlogs(String filter) async {
+    return [];
+  }
 }
 
 class BlogRepositoryImplRemoteServer implements BlogRepository {
   @override
   Future<List<BlogModel>> fetchAllBlogs() async {
+    return [];
+  }
+
+  @override
+  Future<List<BlogModel>> applyFilterToBlogs(String filter) async {
     return [];
   }
 }

@@ -1,5 +1,7 @@
 import 'package:eaythes_mobile/core/constants/styles.dart';
+import 'package:eaythes_mobile/features/auth/presentation/pages/home_screen_loading.dart';
 import 'package:eaythes_mobile/features/auth/presentation/widgets/home_blogs/home_blogs_container.dart';
+import 'package:eaythes_mobile/features/blogs/data/models/blog_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,21 +14,27 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<BlogModel> recentBlogs = [];
     return BlocBuilder<HomeBlogsBloc, BlogsState>(
       builder: (context, state) {
-        return SingleChildScrollView(
-          child: Column(
-            children: [
-              CustomCarousel(
-                recentList: state is BlogsFetchAll ? state.blogs : [],
-              ),
-              const SizedBox(
-                height: spacing * 2,
-              ),
-              const HomeBlogsContainer(),
-            ],
-          ),
-        );
+        if (state is BlogsFetchAll) {
+          recentBlogs = state.blogs;
+        }
+        return state is BlogsInitialLoading
+            ? const HomeScreenLoading()
+            : SingleChildScrollView(
+                child: Column(
+                  children: [
+                    CustomCarousel(
+                      recentList: recentBlogs,
+                    ),
+                    const SizedBox(
+                      height: spacing * 2,
+                    ),
+                    const HomeBlogsContainer(),
+                  ],
+                ),
+              );
       },
     );
   }

@@ -4,6 +4,7 @@ class BlogEntity {
   final String image;
   final String category;
   final String content;
+  final String date;
 
   const BlogEntity({
     required this.id,
@@ -11,5 +12,6 @@ class BlogEntity {
     required this.image,
     required this.category,
     required this.content,
+    required this.date,
   });
 }
