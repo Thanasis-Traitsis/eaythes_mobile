@@ -4,6 +4,7 @@ import 'package:eaythes_mobile/core/usecases/transform_date_extension.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/styles.dart';
+import '../../../../core/widgets/custom_gap.dart';
 import 'blog_date_post.dart';
 
 class BlogListingView extends StatelessWidget {
@@ -43,27 +44,31 @@ class BlogListingView extends StatelessWidget {
               borderRadius: BorderRadius.circular(borderRadius / 2),
             ),
           ),
-          const SizedBox(
+          const CustomGap(
             width: spacing,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ResponsiveText(
-                text: category,
-                style: Theme.of(context).textTheme.bodySmall!,
-              ),
-              const SizedBox(
-                height: spacing / 2,
-              ),
-              ResponsiveText(
-                text: title,
-                style: Theme.of(context).textTheme.titleLarge!,
-              ),
-              BlogDatePost(
-                date: date.timeAgo(),
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ResponsiveText(
+                  text: category,
+                  style: Theme.of(context).textTheme.bodySmall!,
+                  maxLines: 1,
+                ),
+                const CustomGap(
+                  height: spacing / 2,
+                ),
+                ResponsiveText(
+                  text: title,
+                  style: Theme.of(context).textTheme.titleLarge!,
+                  maxLines: 3,
+                ),
+                BlogDatePost(
+                  date: date.timeAgo(),
+                ),
+              ],
+            ),
           ),
         ],
       ),

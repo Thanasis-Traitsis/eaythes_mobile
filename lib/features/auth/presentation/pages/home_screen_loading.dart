@@ -1,3 +1,5 @@
+import 'package:eaythes_mobile/core/usecases/calculate_size.dart';
+import 'package:eaythes_mobile/core/widgets/custom_gap.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/styles.dart';
@@ -19,15 +21,15 @@ class HomeScreenLoading extends StatelessWidget {
             ),
             child: CustomShimmerEffect(radius: borderRadius),
           ),
-          const SizedBox(
+          const CustomGap(
             height: spacing * 2,
           ),
           Container(
-            height: 40,
+            height: searchbarHeight,
             margin: const EdgeInsets.symmetric(horizontal: spacing),
             child: CustomShimmerEffect(radius: borderRadius / 2),
           ),
-          const SizedBox(
+          const CustomGap(
             height: spacing * 2,
           ),
           Container(
@@ -42,11 +44,11 @@ class HomeScreenLoading extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         SizedBox(
-                          height: blogImageHeight,
-                          width: blogImageHeight,
+                          height: calculateSize(context, blogImageHeight),
+                          width: calculateSize(context, blogImageHeight),
                           child: CustomShimmerEffect(radius: borderRadius / 2),
                         ),
-                        const SizedBox(
+                        const CustomGap(
                           width: spacing,
                         ),
                         Expanded(
@@ -54,16 +56,16 @@ class HomeScreenLoading extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                height: 15,
-                                width: 200,
+                                height: calculateSize(context, 15),
+                                width: calculateSize(context, 200),
                                 child: CustomShimmerEffect(
                                     radius: borderRadius / 3),
                               ),
-                              const SizedBox(
+                              const CustomGap(
                                 height: spacing,
                               ),
                               SizedBox(
-                                height: 30,
+                                height: calculateSize(context, 30),
                                 width: double.infinity,
                                 child: CustomShimmerEffect(
                                     radius: borderRadius / 3),

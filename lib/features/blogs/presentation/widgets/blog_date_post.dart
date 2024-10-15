@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../config/theme/responsive_text.dart';
 import '../../../../core/constants/styles.dart';
+import '../../../../core/widgets/custom_gap.dart';
 
 class BlogDatePost extends StatelessWidget {
   final String date;
@@ -19,12 +20,15 @@ class BlogDatePost extends StatelessWidget {
           color: Theme.of(context).primaryColor,
           size: calculateSize(context, AppValues().smallIconSize),
         ),
-        const SizedBox(
+        const CustomGap(
           width: spacing / 2,
         ),
-        ResponsiveText(
-          text: date,
-          style: Theme.of(context).textTheme.bodySmall!,
+        Expanded(
+          child: ResponsiveText(
+            maxLines: 1,
+            text: date,
+            style: Theme.of(context).textTheme.bodySmall!,
+          ),
         ),
       ],
     );

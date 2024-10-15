@@ -1,6 +1,9 @@
+import 'package:eaythes_mobile/features/auth/presentation/widgets/home_blogs/search_container/filter_button.dart';
+import 'package:eaythes_mobile/features/auth/presentation/widgets/home_blogs/search_container/search_textfield.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/constants/styles.dart';
+import '../../../../../../core/widgets/custom_gap.dart';
 import '../../categories_list/categories_list_container.dart';
 
 class SearchAndFilterContainer extends StatelessWidget {
@@ -12,30 +15,23 @@ class SearchAndFilterContainer extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.symmetric(horizontal: padding),
-          child: Row(
+          child: const Row(
             children: [
               Expanded(
-                child: Container(
-                  color: Colors.white,
-                  height: 40,
-                ),
+                child: SearchTextfield(),
               ),
-              const SizedBox(
+              CustomGap(
                 width: spacing,
               ),
-              Container(
-                color: Colors.grey,
-                width: 40,
-                height: 40,
-              )
+              FilterButton()
             ],
           ),
         ),
-        const SizedBox(
+        const CustomGap(
           height: spacing,
         ),
         const CategoriesListContainer(),
-        const SizedBox(
+        const CustomGap(
           height: spacing * 2,
         ),
       ],

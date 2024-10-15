@@ -32,8 +32,7 @@ class _CategoriesListContainerState extends State<CategoriesListContainer> {
             children: List.generate(categories.length, (int index) {
               final category = categories[index];
               return Container(
-                margin: EdgeInsets.only(
-                    right: index != categories.length - 1 ? spacing : 0),
+                margin: const EdgeInsets.only(right: spacing),
                 child: CategoriesListButton(
                   text: category,
                   isChosen: _selectedCategory == category,

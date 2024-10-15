@@ -3,5 +3,6 @@ class AppValues {
   final double normalText = 12.0;
   final double largeText = 14.0;
 
-  final double smallIconSize = 20.0;
+  final double smallIconSize = 18.0;
+  final double searchbarIconSize = 24.0;
 }

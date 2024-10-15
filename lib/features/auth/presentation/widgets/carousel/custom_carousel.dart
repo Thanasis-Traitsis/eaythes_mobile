@@ -1,4 +1,5 @@
 import 'package:eaythes_mobile/core/constants/constants.dart';
+import 'package:eaythes_mobile/core/usecases/calculate_size.dart';
 import 'package:eaythes_mobile/features/auth/presentation/widgets/carousel/carousel_bloc/carousel_bloc.dart';
 import 'package:eaythes_mobile/features/auth/presentation/widgets/carousel/carousel_page_indicator.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class _CustomCarouselState extends State<CustomCarousel> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: carouselHeight,
+          height: calculateSize(context, carouselHeight),
           child: PageView.builder(
             controller: _controller,
             itemCount: recentCount,

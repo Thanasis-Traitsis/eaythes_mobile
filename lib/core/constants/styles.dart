@@ -12,3 +12,6 @@ const double carouselIndicatorSize = 12;
 
 // BLOGS LIST
 const double blogImageHeight = 100;
+
+// SEARCH TEXTFIELD
+const double searchbarHeight = 40;

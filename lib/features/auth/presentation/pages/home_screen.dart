@@ -5,6 +5,7 @@ import 'package:eaythes_mobile/features/blogs/data/models/blog_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/widgets/custom_gap.dart';
 import '../../../blogs/presentation/blogs_bloc/blogs_bloc.dart';
 import '../home_blogs_bloc/home_blogs_bloc.dart';
 import '../widgets/carousel/custom_carousel.dart';
@@ -22,17 +23,22 @@ class HomeScreen extends StatelessWidget {
         }
         return state is BlogsInitialLoading
             ? const HomeScreenLoading()
-            : SingleChildScrollView(
-                child: Column(
-                  children: [
-                    CustomCarousel(
-                      recentList: recentBlogs,
-                    ),
-                    const SizedBox(
-                      height: spacing * 2,
-                    ),
-                    const HomeBlogsContainer(),
-                  ],
+            : GestureDetector(
+                onTap: () {
+                  FocusScope.of(context).unfocus();
+                },
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      CustomCarousel(
+                        recentList: recentBlogs,
+                      ),
+                      const CustomGap(
+                        height: spacing * 2,
+                      ),
+                      const HomeBlogsContainer(),
+                    ],
+                  ),
                 ),
               );
       },

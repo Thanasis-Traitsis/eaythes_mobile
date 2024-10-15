@@ -59,6 +59,10 @@ class AppTheme {
           fontSize: sizes.normalText,
           color: chosenColor.textColor,
         ),
+        bodyLarge: TextStyle(
+          fontSize: sizes.largeText,
+          color: chosenColor.textColor,
+        ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(

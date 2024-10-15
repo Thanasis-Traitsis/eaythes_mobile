@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/constants/styles.dart';
 import '../../../../../core/widgets/custom_category_container.dart';
+import '../../../../../core/widgets/custom_gap.dart';
 
 class CarouselSingleItem extends StatelessWidget {
   final BlogModel blog;
@@ -51,10 +52,14 @@ class CarouselSingleItem extends StatelessWidget {
                   CustomCategoryContainer(
                     text: blog.category,
                   ),
-                  const SizedBox(
+                  const CustomGap(
                     height: spacing,
                   ),
-                  CustomTitle(title: blog.title, isWhite: true),
+                  CustomTitle(
+                    title: blog.title,
+                    isWhite: true,
+                    isCarousel: true,
+                  ),
                 ],
               ),
             ),

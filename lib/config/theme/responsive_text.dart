@@ -6,12 +6,14 @@ class ResponsiveText extends StatelessWidget {
   final String text;
   final TextStyle style;
   final bool isUnderline;
+  final int? maxLines;
 
   const ResponsiveText({
     super.key,
     required this.text,
     required this.style,
     this.isUnderline = false,
+    this.maxLines,
   });
 
   @override
@@ -29,6 +31,8 @@ class ResponsiveText extends StatelessWidget {
                 Theme.of(context).textTheme.bodyMedium!.fontSize!),
         fontWeight: style.fontWeight ?? FontWeight.normal,
       ),
+      maxLines: maxLines,
+      overflow: maxLines == null ? null : TextOverflow.ellipsis,
     );
   }
 }

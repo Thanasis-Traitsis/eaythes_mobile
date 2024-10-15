@@ -19,6 +19,7 @@ class CustomCategoryContainer extends StatelessWidget {
         color: categoryTheme?.backgroundColor,
       ),
       child: ResponsiveText(
+        maxLines: 1,
         text: text,
         style: Theme.of(context).textTheme.labelSmall!,
       ),
