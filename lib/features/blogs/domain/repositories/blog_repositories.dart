@@ -5,4 +5,5 @@ abstract class BlogRepository {
   factory BlogRepository() => BlogRepositoryImplMockData();
   Future<List<BlogModel>> fetchAllBlogs();
   Future<List<BlogModel>> applyFilterToBlogs(String filter);
+  Future<List<BlogModel>> searchToBlogs(String search, String? filter);
 }

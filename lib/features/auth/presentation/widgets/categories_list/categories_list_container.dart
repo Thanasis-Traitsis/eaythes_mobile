@@ -37,11 +37,14 @@ class _CategoriesListContainerState extends State<CategoriesListContainer> {
                   text: category,
                   isChosen: _selectedCategory == category,
                   onPressed: () {
-                    BlocProvider.of<HomeBlogsBloc>(context)
-                        .add(FilterBlogs(category));
-                    setState(() {
-                      _selectedCategory = category;
-                    });
+                    if (category != _selectedCategory) {
+                      BlocProvider.of<HomeBlogsBloc>(context).add(FilterBlogs(
+                        filter: category,
+                      ));
+                      setState(() {
+                        _selectedCategory = category;
+                      });
+                    }
                   },
                 ),
               );

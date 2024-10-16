@@ -10,7 +10,8 @@ abstract class BlogsEvent extends Equatable {
 class FetchAllBlogs extends BlogsEvent {}
 
 class FilterBlogs extends BlogsEvent {
-  final String filter;
-  
-  const FilterBlogs(this.filter);
+  final String? filter;
+  final String? search;
+
+  const FilterBlogs({this.filter, this.search});
 }

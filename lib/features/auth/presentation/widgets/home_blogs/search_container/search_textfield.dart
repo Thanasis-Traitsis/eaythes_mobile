@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/constants/sizes.dart';
 import '../../../../../../core/constants/styles.dart';
 import '../../../../../../core/usecases/calculate_size.dart';
+import '../../../../../blogs/presentation/blogs_bloc/blogs_bloc.dart';
+import '../../../home_blogs_bloc/home_blogs_bloc.dart';
 
 class SearchTextfield extends StatefulWidget {
   const SearchTextfield({super.key});
@@ -44,6 +47,14 @@ class _SearchTextfieldState extends State<SearchTextfield> {
       height: calculateSize(context, searchbarHeight),
       child: TextField(
         controller: _controller,
+        onChanged: (value) {
+          if (value.length > 1) {
+            BlocProvider.of<HomeBlogsBloc>(context)
+                .add(FilterBlogs(search: value));
+          } else {
+            BlocProvider.of<HomeBlogsBloc>(context).add(const FilterBlogs());
+          }
+        },
         style: TextStyle(
           color: Theme.of(context).textTheme.bodyLarge!.color,
           fontSize: calculateSize(
@@ -74,6 +85,8 @@ class _SearchTextfieldState extends State<SearchTextfield> {
                   ),
                   onPressed: () {
                     _controller.clear();
+                    BlocProvider.of<HomeBlogsBloc>(context)
+                        .add(const FilterBlogs());
                   },
                 )
               : null,
